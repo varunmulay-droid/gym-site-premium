@@ -1,0 +1,45 @@
+# Render Blueprint — one-touch deploy for gym-site-premium
+# 使用方法：把本文件放到仓库根目录，推送后在 Render 控制台选择
+# "New +" → "Blueprint" → 连接该仓库即可一键部署。
+
+services:
+  # ============ 情况 A：纯静态站点（HTML/CSS/JS，无需构建） ============
+  # 如果仓库根目录直接就是 index.html，用这个：
+  - type: web
+    name: gym-site-premium
+    runtime: static
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+
+  # ============ 情况 B：Node 前端项目（Vite / React 等，需要构建） ============
+  # 如果仓库里有 package.json，请删除上面的服务，改用下面这个：
+  # - type: web
+  #   name: gym-site-premium
+  #   runtime: static
+  #   buildCommand: npm install && npm run build
+  #   staticPublishPath: dist        # Vite 默认是 dist；Create React App 改成 build
+  #   pullRequestPreviewsEnabled: true
+  #   routes:
+  #     - type: rewrite              # 单页应用（SPA）路由回退到 index.html
+  #       source: /*
+  #       destination: /index.html
+
+  # ============ 情况 C：有后端（Node/Express 等，需常驻进程） ============
+  # 如果站点需要服务端运行，改用 Web Service：
+  # - type: web
+  #   name: gym-site-premium
+  #   runtime: node
+  #   plan: free
+  #   buildCommand: npm install
+  #   startCommand: npm start
+  #   healthCheckPath: /
+  #   envVars:
+  #     - key: NODE_ENV
+  #       value: production
