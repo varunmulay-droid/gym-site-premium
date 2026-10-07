@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "FORGE — Forged in Steel",
+      "hasCanvas": false,
+      "bodyTextLen": 1728,
+      "bodyTextHash": "b9c142166cb0ddbe8037d9c621e1a0e51ee834a3122c77f9ed235d30dcdf28c0",
+      "bodyTextPrefix": "FORGE METHOD FLOOR PROGRAMS VISIT JOIN THE FLOOR EST. 2019 — MEM",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "FORGE — Forged in Steel",
+      "hasCanvas": false,
+      "bodyTextLen": 1680,
+      "bodyTextHash": "f1b055b8c939845158e6d09c3a487123400e89b4c68ae25fd3e9d56d176a2dff",
+      "bodyTextPrefix": "FORGE METHOD FLOOR PROGRAMS VISIT JOIN THE FLOOR EST. 2019 — MEM",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

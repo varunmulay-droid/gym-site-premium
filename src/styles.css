@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0a;
+  --color-foreground: #ececec;
+  --color-surface: #121212;
+  --color-surface-2: #1a1a1a;
+  --color-muted: #8b8b8b;
+  --color-faint: #5c5c5c;
+  --color-accent: #ccff00;
+  --color-accent-foreground: #0a0a0a;
+  --color-border: #2a2a2a;
+  --color-steel: #c8c8c8;
+
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Oswald", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  --text-kicker: 0.6875rem;
+  --text-display: clamp(3.5rem, 12.5vw, 10rem);
+  --text-section: clamp(2.15rem, 5.4vw, 4.4rem);
+  --text-lead: clamp(1.05rem, 1.1rem + 0.4vw, 1.25rem);
+
+  --tracking-kicker: 0.28em;
+  --tracking-display: -0.035em;
+  --leading-display: 0.82;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+}
+
+body.has-custom-cursor,
+body.has-custom-cursor * {
+  cursor: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
