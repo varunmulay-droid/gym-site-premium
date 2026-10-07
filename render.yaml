@@ -3,9 +3,16 @@ services:
     name: gym-site-premium
     runtime: node
     plan: free
+
     buildCommand: npm ci && npm run build
+
     startCommand: npx vite preview --host 0.0.0.0
+
     healthCheckPath: /
+
     envVars:
       - key: NODE_ENV
         value: production
+
+    autoDeploy: true
+    pullRequestPreviewsEnabled: true
