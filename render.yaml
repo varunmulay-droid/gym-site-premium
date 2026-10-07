@@ -1,18 +1,26 @@
-# Render Blueprint — one-touch deploy for gym-site-premium
-# Node/Vite static site: installs deps, builds, and serves the dist output.
+# Render Blueprint — gym-site-premium (TanStack Start + Nitro full-stack app)
+# This is a WEB SERVICE, not a static site: the build produces a Node server
+# in .output/server (Nitro), and the app uses a database.
 
 services:
   - type: web
     name: gym-site-premium
-    runtime: static
+    runtime: node
+    plan: free
     buildCommand: npm install && npm run build
-    staticPublishPath: dist        # Vite default output; use "build" for Create React App
-    pullRequestPreviewsEnabled: true
-    routes:
-      - type: rewrite              # SPA fallback so client-side routes don't 404
-        source: /*
-        destination: /index.html
-    headers:
-      - path: /*
-        name: X-Content-Type-Options
-        value: nosniff
+    startCommand: node .output/server/index.mjs
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Nitro listens on PORT/HOST automatically on Render — no config needed.
+      # Uncomment and wire a real database if you don't want the PGLite fallback:
+      # - key: DATABASE_URL
+      #   fromDatabase:
+      #     name: gym-site-db
+      #     property: connectionString
+
+# Optional: managed Postgres (uncomment if you want a persistent DB on Render)
+# databases:
+#   - name: gym-site-db
+#     plan: free
