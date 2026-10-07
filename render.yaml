@@ -5,8 +5,7 @@ services:
     plan: free
 
     buildCommand: npm ci && npm run build
-
-    startCommand: node .output/server/index.mjs
+    startCommand: npx vite preview --host 0.0.0.0
 
     healthCheckPath: /
 
